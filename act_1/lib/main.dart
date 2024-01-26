@@ -1,8 +1,15 @@
 import 'package:flutter/material.dart';
+import 'dart:developer';
 
 void main() {
   runApp(const MyApp());
 }
+
+const Map<String, IconData> iconDataMap = {
+  'phone': Icons.phone_iphone,
+  'accessibility': Icons.accessibility_new,
+  'timer': Icons.timer
+};
 
 class MyApp extends StatelessWidget {
   const MyApp({super.key});
@@ -70,10 +77,10 @@ class CardExample extends StatelessWidget {
           const Row(
             mainAxisAlignment: MainAxisAlignment.spaceEvenly,
             children: <Widget>[
-              IconButtonExample(),
-              IconButtonExample(),
-              IconButtonExample(),
-              IconButtonExample(),
+              IconButtonExample(icon: 'accessibility'),
+              IconButtonExample(icon: 'timer'),
+              IconButtonExample(icon: 'phone'),
+              IconButtonExample(icon: 'phone'),
             ],
           ),
         ],
@@ -82,8 +89,6 @@ class CardExample extends StatelessWidget {
   }
 }
 
-double _volume = 0.0;
-
 class _IconButtonExampleState extends State<IconButtonExample> {
   @override
   Widget build(BuildContext context) {
@@ -91,11 +96,11 @@ class _IconButtonExampleState extends State<IconButtonExample> {
       mainAxisSize: MainAxisSize.min,
       children: <Widget>[
         IconButton(
-          icon: const Icon(Icons.volume_up),
+          icon: Icon(iconDataMap[widget.icon] ?? Icons.error),
           tooltip: 'Increase volume by 10',
           onPressed: () {
             setState(() {
-              _volume += 10;
+              log('data: ${widget.icon}');
             });
           },
         ),
@@ -105,7 +110,8 @@ class _IconButtonExampleState extends State<IconButtonExample> {
 }
 
 class IconButtonExample extends StatefulWidget {
-  const IconButtonExample({super.key});
+  const IconButtonExample({super.key, required this.icon});
+  final String icon;
 
   @override
   State<IconButtonExample> createState() => _IconButtonExampleState();
