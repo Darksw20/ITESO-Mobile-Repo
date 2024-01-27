@@ -6,15 +6,21 @@ A new Flutter project.
 
 - Widgets
 - Scaffold
+- Columns
+- Colors
+- State of the app
 
 ## Lo que me costo mas trabajo
 
-- Listado
-- de
+- Understand how the Data layer works on Dart.
+- How to build the layers since is a bit confusing.
 
 ## Lo que aprendi
 
-- Listado
-- de
+- [Dart] how to manage the States
+- [POO] how to work with class interactions on dart
+- [Markdown] How to build READMEs
 
 ## Screens
+
+![My Image](./img/Screenshot.PNG)
