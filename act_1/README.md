@@ -25,4 +25,4 @@ A new Flutter project.
 
 ![My Image](./img/Screenshot.PNG)
 
-![My Video](https://github.com/Darksw20/ITESO-Mobile-Repo/blob/main/act_1/img/video.gif?raw=true)
+![My Video](https://github.com/Darksw20/ITESO-Mobile-Repo/blob/main/act_1/img/Video.gif?raw=true)
