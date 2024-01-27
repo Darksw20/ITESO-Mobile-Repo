@@ -25,6 +25,4 @@ A new Flutter project.
 
 ![My Image](./img/Screenshot.PNG)
 
-<div align="center">
-  <video src="./img/video.MP4" width="400" />
-</div>
+![My Video](https://github.com/Darksw20/ITESO-Mobile-Repo/blob/main/act_1/img/video.gif?raw=true)
