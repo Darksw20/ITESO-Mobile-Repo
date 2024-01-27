@@ -24,3 +24,7 @@ A new Flutter project.
 ## Screens
 
 ![My Image](./img/Screenshot.PNG)
+
+<div align="center">
+  <video src="./img/video.MP4" width="400" />
+</div>
