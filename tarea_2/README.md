@@ -10,10 +10,12 @@ A new Flutter project.
 - Colors
 - Snackbar
 - State of the app
+- How to dynamically add elements on a listView
 
 ## Lo que me costo mas trabajo
 
--
+- Integrar el snackbar una vez que ya estaban los estilos
+- Arreglar los estilos del hourly Forecast ya que no me los tomaba en cuenta
 
 ## Lo que aprendi
 
