@@ -1,30 +1,33 @@
 import 'package:flutter/material.dart';
 import 'dart:developer';
 
-const hourlyForecast = [
+const List<Map<String, dynamic>> hourlyForecast = [
   {'hour': 'Now', 'temp': 16, 'img': 'moon'},
   {'hour': '12 AM', 'temp': 14, 'img': 'moon'},
   {'hour': '1 AM', 'temp': 14, 'img': 'moon'},
   {'hour': '2 AM', 'temp': 13, 'img': 'moon'},
   {'hour': '3 AM', 'temp': 11, 'img': 'moon'},
 ];
-const weeklyForecast = [
-  {'day': 'today', 'img': 'sun', 'max': '28', 'min': 9},
-  {'day': 'Tuesday', 'img': 'sun', 'max': '28', 'min': 9},
-  {'day': 'Wednesday', 'img': 'sun', 'max': '28', 'min': 9},
-  {'day': 'Thursday', 'img': 'sun', 'max': '28', 'min': 9},
-  {'day': 'Friday', 'img': 'sun', 'max': '28', 'min': 9},
-  {'day': 'Saturday', 'img': 'sun', 'max': '28', 'min': 9},
-  {'day': 'Sunday', 'img': 'sun', 'max': '28', 'min': 9},
-  {'day': 'Monday', 'img': 'sun', 'max': '28', 'min': 9},
-  {'day': 'Tuesday', 'img': 'sun', 'max': '28', 'min': 9},
-  {'day': 'Wednesday', 'img': 'sun', 'max': '28', 'min': 9}
+
+const List<Map<String, dynamic>> weeklyForecast = [
+  {'day': 'today', 'img': 'sun', 'max': '28', 'min': '9'},
+  {'day': 'Tuesday', 'img': 'sun', 'max': '28', 'min': '9'},
+  {'day': 'Wednesday', 'img': 'sun', 'max': '28', 'min': '9'},
+  {'day': 'Thursday', 'img': 'sun', 'max': '28', 'min': '9'},
+  {'day': 'Friday', 'img': 'sun', 'max': '28', 'min': '9'},
+  {'day': 'Saturday', 'img': 'sun', 'max': '28', 'min': '9'},
+  {'day': 'Sunday', 'img': 'sun', 'max': '28', 'min': '9'},
+  {'day': 'Monday', 'img': 'sun', 'max': '28', 'min': '9'},
+  {'day': 'Tuesday', 'img': 'sun', 'max': '28', 'min': '9'},
+  {'day': 'Wednesday', 'img': 'sun', 'max': '28', 'min': '9'}
 ];
 
 const Map<String, IconData> iconsMap = {
   'phone': Icons.phone_iphone,
   'accessibility': Icons.accessibility_new,
-  'timer': Icons.timer
+  'timer': Icons.timer,
+  'moon': Icons.nightlight_round,
+  'sun': Icons.light_mode
 };
 
 void main() {
@@ -32,51 +35,74 @@ void main() {
 }
 
 class MyApp extends StatelessWidget {
-  const MyApp({super.key});
+  const MyApp({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-        title: 'Flutter Demo',
-        theme: ThemeData(
-          scaffoldBackgroundColor: const Color.fromRGBO(0, 50, 86, 1),
-          useMaterial3: true,
+      title: 'Flutter Demo',
+      theme: ThemeData(
+        scaffoldBackgroundColor: const Color.fromRGBO(0, 50, 86, 1),
+        useMaterial3: true,
+      ),
+      home: const Scaffold(
+        body: Column(
+          children: [
+            Text(
+              "Hourly forecast",
+              textAlign: TextAlign.start,
+              style: TextStyle(color: Colors.white),
+            ),
+            HourlyCard(forecast: hourlyForecast),
+            Text(
+              "10-day forecast",
+              textAlign: TextAlign.start,
+              style: TextStyle(color: Colors.white),
+            ),
+            WeeklyCard(forecast: weeklyForecast),
+          ],
         ),
-        home: const Scaffold(
-          body: Column(children: [
-            Text("Hourly forecast",
-                textAlign: TextAlign.start,
-                style: TextStyle(color: Colors.white)),
-            HourlyCard(),
-            Text("10-day forecast",
-                textAlign: TextAlign.start,
-                style: TextStyle(color: Colors.white)),
-            WeeklyCard(),
-          ]),
-        ));
+      ),
+    );
   }
 }
 
 class WeeklyCard extends StatelessWidget {
-  const WeeklyCard({Key? key}) : super(key: key);
+  final List<Map<String, dynamic>> forecast;
+
+  const WeeklyCard({Key? key, required this.forecast}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     return Center(
       child: Card(
         elevation: 0,
-        color: const Color.fromARGB(240, 0, 29, 53),
+        color: const Color.fromRGBO(0, 50, 86, 1),
         child: SizedBox(
           width: 300,
           height: 450,
           child: ListView.separated(
             separatorBuilder: (BuildContext context, int index) {
-              return const SizedBox(height: 20);
+              return const SizedBox(height: 5);
             },
             scrollDirection: Axis.vertical,
-            itemCount: weeklyForecast.length,
+            itemCount: forecast.length,
             itemBuilder: (context, index) {
-              return const WeeklyItem();
+              return Padding(
+                padding: const EdgeInsets.symmetric(vertical: .5),
+                child: Container(
+                  decoration: BoxDecoration(
+                    color: const Color.fromARGB(240, 0, 29, 53),
+                    borderRadius: BorderRadius.vertical(
+                      top: index == 0 ? const Radius.circular(12) : Radius.zero,
+                      bottom: index == forecast.length - 1
+                          ? const Radius.circular(12)
+                          : Radius.zero,
+                    ),
+                  ),
+                  child: WeeklyItem(data: forecast[index]),
+                ),
+              );
             },
           ),
         ),
@@ -86,7 +112,9 @@ class WeeklyCard extends StatelessWidget {
 }
 
 class HourlyCard extends StatelessWidget {
-  const HourlyCard({Key? key}) : super(key: key);
+  final List<Map<String, dynamic>> forecast;
+
+  const HourlyCard({Key? key, required this.forecast}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -101,15 +129,14 @@ class HourlyCard extends StatelessWidget {
             mainAxisAlignment: MainAxisAlignment.spaceEvenly,
             children: [
               Expanded(
-                // Wrap ListView.separated with Expanded
                 child: ListView.separated(
                   separatorBuilder: (BuildContext context, int index) {
                     return const SizedBox(height: 20);
                   },
                   scrollDirection: Axis.horizontal,
-                  itemCount: hourlyForecast.length,
+                  itemCount: forecast.length,
                   itemBuilder: (context, index) {
-                    return const HourlyItem();
+                    return HourlyItem(data: forecast[index]);
                   },
                 ),
               )
@@ -122,35 +149,72 @@ class HourlyCard extends StatelessWidget {
 }
 
 class HourlyItem extends StatelessWidget {
-  const HourlyItem({super.key});
+  final Map<String, dynamic> data;
+
+  const HourlyItem({Key? key, required this.data}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
-    return const Center(
-      child: Column(children: <Widget>[
-        Text("16°", style: TextStyle(color: Colors.white)),
-        IconButtonComponent(icon: 'accessibility'),
-        Text("Now", style: TextStyle(color: Colors.white)),
-      ]),
+    return Center(
+      child: Column(
+        children: <Widget>[
+          Text(
+            "${data['temp']}°",
+            style: const TextStyle(color: Colors.white),
+          ),
+          IconButtonComponent(icon: data['img']),
+          Text(
+            data['hour'],
+            style: const TextStyle(color: Colors.white),
+          ),
+        ],
+      ),
     );
   }
 }
 
 class WeeklyItem extends StatelessWidget {
-  const WeeklyItem({super.key});
+  final Map<String, dynamic> data;
+
+  const WeeklyItem({Key? key, required this.data}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
-    return const Center(
-      child: Row(
-          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+    return Center(
+      child: Container(
+        padding: const EdgeInsets.only(left: 10, right: 10),
+        child: Row(
+          mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: <Widget>[
-            Text("Today", style: TextStyle(color: Colors.white)),
-            IconButtonComponent(icon: 'accessibility'),
-            Text("18°/9°", style: TextStyle(color: Colors.white)),
-          ]),
+            Text(
+              data['day'],
+              style: const TextStyle(color: Colors.white),
+            ),
+            Row(
+              crossAxisAlignment: CrossAxisAlignment.center,
+              children: <Widget>[
+                IconButtonComponent(icon: data['img']),
+                const SizedBox(width: 30),
+                Text(
+                  "${data['max']}°/${data['min']}°",
+                  style: const TextStyle(color: Colors.white),
+                )
+              ],
+            )
+          ],
+        ),
+      ),
     );
   }
+}
+
+class IconButtonComponent extends StatefulWidget {
+  final String icon;
+
+  const IconButtonComponent({Key? key, required this.icon}) : super(key: key);
+
+  @override
+  State<IconButtonComponent> createState() => _IconButtonComponentState();
 }
 
 class _IconButtonComponentState extends State<IconButtonComponent> {
@@ -164,7 +228,6 @@ class _IconButtonComponentState extends State<IconButtonComponent> {
         IconButton(
           color: _color,
           icon: Icon(iconsMap[widget.icon] ?? Icons.error),
-          tooltip: 'Increase volume by 10',
           onPressed: () {
             setState(() {
               log('data: ${widget.icon}');
@@ -179,12 +242,4 @@ class _IconButtonComponentState extends State<IconButtonComponent> {
       ],
     );
   }
-}
-
-class IconButtonComponent extends StatefulWidget {
-  const IconButtonComponent({super.key, required this.icon});
-  final String icon;
-
-  @override
-  State<IconButtonComponent> createState() => _IconButtonComponentState();
 }
