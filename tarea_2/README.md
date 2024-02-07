@@ -24,6 +24,6 @@ A new Flutter project.
 
 ## Screens
 
-![My Image](./img/Screenshot.PNG)
+![My Image](./img/img.png)
 
 ![My Video](https://github.com/Darksw20/ITESO-Mobile-Repo/blob/main/tarea_2/img/Video.gif?raw=true)
