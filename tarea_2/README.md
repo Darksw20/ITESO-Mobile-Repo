@@ -23,6 +23,7 @@ A new Flutter project.
 - [Snackbar] component
 - [POO] how to work with class interactions on dart
 - [Markdown] How to build READMEs
+- [ListView] How to manage diferent ListViews
 
 ## Screens
 
