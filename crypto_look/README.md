@@ -1,16 +1,27 @@
 # crypto_look
 
-A new Flutter project.
+App para practicar el uso de widgets
 
-## Getting Started
+## Actividad 4 Conociendo los Scaffold y widgets mas comunes
 
-This project is a starting point for a Flutter application.
+- List view
+- List tile
+- Cargar datos de un JSON / Mapa
 
-A few resources to get you started if this is your first Flutter project:
+## Lo que me costo mas trabajo
 
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
+- Hay un error de cors que no permitia que las imagenes se vieran
+- El paso de datos de una vista a otra
+- El hot reload que no cargaba
 
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+## Lo que aprendi
+
+- [Dart] How to send data between states
+- [Flutter] How to interpolate data
+- [Dart] How to manage jsons
+
+## Screens
+
+![My Image](./img/img1.png)
+![My Image](./img/img2.png)
+![My Image](./img/img3.png)
