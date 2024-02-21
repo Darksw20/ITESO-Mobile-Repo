@@ -12,9 +12,12 @@ class CryptoList extends StatelessWidget {
         itemBuilder: (BuildContext context, int index) {
           return ListTile(
             title: Text("${criptos[index]["name"]}"),
-            subtitle: Text("test2"),
+            subtitle: Text(
+                '${criptos[index]["country"]}\n ${criptos[index]["year_established"]}'),
+            isThreeLine: true,
+            leading: Image.network("${criptos[index]["image"]}"),
             trailing: CircleAvatar(
-              child: Text("text"),
+              child: Text("${criptos[index]["trust_score"]}"),
             ),
           );
         });

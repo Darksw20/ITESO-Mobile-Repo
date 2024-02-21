@@ -25,7 +25,7 @@ class _MyHomePageState extends State<MyHomePage> {
     return Scaffold(
         appBar: AppBar(
           backgroundColor: Theme.of(context).colorScheme.inversePrimary,
-          title: const Text("Title"),
+          title: const Text("Crypto APP"),
         ),
         body: CryptoList(
           criptos: criptos,
