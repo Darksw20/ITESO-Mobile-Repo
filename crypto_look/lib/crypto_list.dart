@@ -1,3 +1,4 @@
+import 'package:crypto_look/details_page.dart';
 import 'package:flutter/material.dart';
 
 class CryptoList extends StatelessWidget {
@@ -16,6 +17,17 @@ class CryptoList extends StatelessWidget {
                 '${criptos[index]["country"]}\n ${criptos[index]["year_established"]}'),
             isThreeLine: true,
             leading: Image.network("${criptos[index]["image"]}"),
+            onTap: () {
+              Navigator.push(
+                context,
+                MaterialPageRoute(
+                    builder: (context) => DetailsPage(
+                        logoUrl: criptos[index]["image"],
+                        name: criptos[index]["name"],
+                        date: criptos[index]["year_established"],
+                        description: criptos[index]["description"])),
+              );
+            },
             trailing: CircleAvatar(
               child: Text("${criptos[index]["trust_score"]}"),
             ),

@@ -374,7 +374,7 @@ const String CRYPTO_EXCHANGES = '''[
 		"name": "Binance",
 		"year_established": 2017,
 		"country": "Cayman Islands",
-		"description": "",
+		"description": "Test description",
 		"url": "https://www.binance.com/",
 		"image": "https://assets.coingecko.com/markets/images/52/small/binance.jpg?1519353250",
 		"has_trading_incentive": false,
