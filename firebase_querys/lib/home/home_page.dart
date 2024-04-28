@@ -89,7 +89,8 @@ Query<Map<String, dynamic>> getNotesQuery(String operation, String userId,
     return FirebaseFirestore.instance
         .collection(collection)
         .where("userId", isEqualTo: userId)
-        .where("data.title", isEqualTo: name);
+        .where("data.title", isGreaterThanOrEqualTo: name)
+        .where("data.title", isLessThanOrEqualTo: '${name!}\uf8ff');
   } else if (operation == "sortByDate") {
     return FirebaseFirestore.instance
         .collection(collection)
