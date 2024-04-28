@@ -30,22 +30,43 @@ class HomePage extends StatelessWidget {
           ),
         ],
       ),
-      body: FirestoreListView(
-        padding: EdgeInsets.symmetric(horizontal: 18),
-        pageSize: 15,
-        query: getNotesQuery(
-            "findByName", FirebaseAuth.instance.currentUser!.uid,
-            name: "test"),
-        // query: getNotesQuery("sortByDate", FirebaseAuth.instance.currentUser!.uid),
-        // query: getNotesQuery("", FirebaseAuth.instance.currentUser!.uid),
-        itemBuilder: (BuildContext context,
-            QueryDocumentSnapshot<Map<String, dynamic>> document) {
-          return ItemNote(
-              noteContent: document.data(),
-              onDelete: () {
-                print("Note deleted");
-              });
-        },
+      body: Row(
+        children: [
+          //add search input
+          Expanded(
+            child: Padding(
+              padding: EdgeInsets.all(8),
+              child: TextField(
+                decoration: const InputDecoration(
+                  hintText: 'Search...',
+                  border: OutlineInputBorder(),
+                ),
+                onChanged: (value) {
+                  // Perform search based on the entered value
+                  // Update the query parameter of FirestoreListView
+                  print("Search: $value");
+                },
+              ),
+            ),
+          ),
+          FirestoreListView(
+            padding: EdgeInsets.symmetric(horizontal: 18),
+            pageSize: 15,
+            query: getNotesQuery(
+                "findByName", FirebaseAuth.instance.currentUser!.uid,
+                name: "test"),
+            // query: getNotesQuery("sortByDate", FirebaseAuth.instance.currentUser!.uid),
+            // query: getNotesQuery("", FirebaseAuth.instance.currentUser!.uid),
+            itemBuilder: (BuildContext context,
+                QueryDocumentSnapshot<Map<String, dynamic>> document) {
+              return ItemNote(
+                  noteContent: document.data(),
+                  onDelete: () {
+                    print("Note deleted");
+                  });
+            },
+          ),
+        ],
       ),
       floatingActionButtonLocation: ExpandableFab.location,
       floatingActionButton: ExpandableFab(
