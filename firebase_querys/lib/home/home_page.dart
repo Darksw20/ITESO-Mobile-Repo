@@ -19,6 +19,14 @@ class _HomePageState extends State<HomePage> {
   String _searchText = "";
   String _orderBy = "";
 
+  Future<void> _deleteNote(String noteId) async {
+    try {
+      await FirebaseFirestore.instance.collection("notes").doc(noteId).delete();
+    } catch (e) {
+      print("Error deleting note: $e");
+    }
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -87,7 +95,7 @@ class _HomePageState extends State<HomePage> {
                 return ItemNote(
                     noteContent: document.data(),
                     onDelete: () {
-                      print("Note deleted");
+                      _deleteNote(document.id);
                     });
               },
             ),
