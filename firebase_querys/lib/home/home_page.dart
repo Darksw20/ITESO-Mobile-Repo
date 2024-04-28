@@ -93,6 +93,7 @@ class _HomePageState extends State<HomePage> {
               itemBuilder: (BuildContext context,
                   QueryDocumentSnapshot<Map<String, dynamic>> document) {
                 return ItemNote(
+                    docId: document.id,
                     noteContent: document.data(),
                     onDelete: () {
                       print('Delete note: $document');
