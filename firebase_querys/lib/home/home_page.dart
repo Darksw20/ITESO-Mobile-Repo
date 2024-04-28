@@ -95,6 +95,7 @@ class _HomePageState extends State<HomePage> {
                 return ItemNote(
                     noteContent: document.data(),
                     onDelete: () {
+                      print('Delete note: $document');
                       _deleteNote(document.id);
                     });
               },
