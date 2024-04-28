@@ -85,8 +85,8 @@ class _ItemNoteState extends State<ItemNote> {
                       .collection("notes")
                       .doc(widget.docId)
                       .update({
-                    'title': _titleController.text,
-                    'description': _descriptionController.text,
+                    'data.title': _titleController.text,
+                    'data.description': _descriptionController.text,
                   });
                   ScaffoldMessenger.of(context).showSnackBar(
                     SnackBar(
