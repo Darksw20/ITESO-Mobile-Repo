@@ -1,16 +1,24 @@
-# firebase_querys
+# act_6
 
 A new Flutter project.
 
-## Getting Started
+## Actividad 6 Queries a Firebase
 
-This project is a starting point for a Flutter application.
+- Firebase
+- Querys
+- Firebase UI components
 
-A few resources to get you started if this is your first Flutter project:
+## Lo que me costo mas trabajo
 
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
+- Conectar mi app con flutter
+- Hacer el troubleshooting en mac
 
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+## Lo que aprendi
+
+- [Firebase] Fireabase querys
+- [Widgets] Practica de states
+- [Markdown] How to build READMEs
+
+## Screens
+
+![My Image](./img/Screenshot.png)
